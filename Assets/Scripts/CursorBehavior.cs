@@ -9,8 +9,8 @@ public class CursorBehavior : MonoBehaviour
     [SerializeField] private float cursorSpeed;
 
     private float screenEdgeThreshold = .02f;
-
     private bool objectSelected = false;
+    private GameObject playerSelection;
 
 
 
@@ -45,18 +45,23 @@ public class CursorBehavior : MonoBehaviour
         {
             // Debug.DrawRay(transform.position, Vector3.forward, Color.red, 50f);
 
-            if(Physics.Raycast(transform.position, Vector3.forward, 1000f, LayerMask.GetMask("PlayerObjects")))
+            RaycastHit target;
+
+            if(Physics.Raycast(transform.position, Vector3.forward, out target, 1000f, LayerMask.GetMask("PlayerObjects")))
             {
-                UnityEngine.Debug.Log(objectSelected);
                 if (!objectSelected)
                 {
                     objectSelected = true;
+                    playerSelection = target.transform.gameObject;
                     return;
                 }
             }
 
             if (objectSelected)
+            {
                 objectSelected = false;
+                playerSelection = null;
+            }
         }
     }
 
