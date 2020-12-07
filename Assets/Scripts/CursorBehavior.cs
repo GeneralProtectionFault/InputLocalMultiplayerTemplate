@@ -10,14 +10,8 @@ public class CursorBehavior : MonoBehaviour
 
     private float screenEdgeThreshold = .02f;
 
-    public void OnTestButton()
-    {
-        
-        foreach (var player in PlayerInput.all)
-        {
-            UnityEngine.Debug.Log(player);
-        }
-    }
+    private bool objectSelected = false;
+
 
 
     void Update()
@@ -30,19 +24,41 @@ public class CursorBehavior : MonoBehaviour
             (viewportPosition.y > 1 - screenEdgeThreshold && movement.y > 0))
             return;
 
-        // UnityEngine.Debug.Log(movement);
-
-        transform.Translate(new Vector3(movement.x, movement.y, 0f) * cursorSpeed);
+        // Moves the cursor
+        transform.Translate(new Vector3(movement.x, movement.y, 0f) * cursorSpeed/1000);
     }
 
 
 
     public void OnCursorMove(InputAction.CallbackContext context)
     {
-        if (context.phase != InputActionPhase.Canceled)
+        if (context.phase != InputActionPhase.Canceled && !objectSelected)
             movement = context.ReadValue<Vector2>();
         else  // Released button!
             movement = Vector2.zero;
     }
-    
+
+
+    public void OnSelectButton (InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started)
+        {
+            // Debug.DrawRay(transform.position, Vector3.forward, Color.red, 50f);
+
+            if(Physics.Raycast(transform.position, Vector3.forward, 1000f, LayerMask.GetMask("PlayerObjects")))
+            {
+                UnityEngine.Debug.Log(objectSelected);
+                if (!objectSelected)
+                {
+                    objectSelected = true;
+                    return;
+                }
+            }
+
+            if (objectSelected)
+                objectSelected = false;
+        }
+    }
+
+
 }

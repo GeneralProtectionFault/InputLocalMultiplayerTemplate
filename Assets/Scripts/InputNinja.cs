@@ -72,22 +72,24 @@ public class InputNinja : MonoBehaviour
         {
             PlayerInput theCursor = PlayerInput.Instantiate(playerCursor, -1, controlScheme, -1, device);
             theCursor.transform.parent = currentCanvas.transform;
+            theCursor.transform.localScale = new Vector3 (1f, 1f, 1f);
             
         }
 
-        UnityEngine.Debug.Log("There are currently " + numberOfActivePlayers + " players.");
     }
 
 
 
-    public void OnPlayerJoin()
+    public void OnPlayerJoin(PlayerInput input)
     {
         numberOfActivePlayers = PlayerInput.all.Count;
+        UnityEngine.Debug.Log("There are currently " + numberOfActivePlayers + " players.");
     }
 
     public void OnPlayerLeft(PlayerInput input)
     {
         numberOfActivePlayers = PlayerInput.all.Count;
+        UnityEngine.Debug.Log("There are currently " + numberOfActivePlayers + " players.");
     }
   
 }

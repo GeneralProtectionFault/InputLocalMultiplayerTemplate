@@ -89,7 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1245e032bb61b8e4aa339e87abebe092, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursorSpeed: 0.1
+  cursorSpeed: 50
 --- !u!114 &6914592580568750532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,19 +136,7 @@ MonoBehaviour:
     m_ActionId: d1954d95-a8d0-4587-82d4-e97df6db7f48
     m_ActionName: Player/Look[/XInputControllerWindows/rightStick,/Mouse/delta]
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7824803196987812671}
-        m_TargetAssemblyTypeName: CursorBehavior, Assembly-CSharp
-        m_MethodName: OnTestButton
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: 5c142f27-81c3-4e5f-89c8-b7d45eaaa61e
     m_ActionName: Player/Fire[/XInputControllerWindows/rightTrigger,/Mouse/leftButton]
   - m_PersistentCalls:
@@ -191,6 +179,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 4774211a-f33f-4d03-a472-e8dd1068dfcc
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7824803196987812671}
+        m_TargetAssemblyTypeName: CursorBehavior, Assembly-CSharp
+        m_MethodName: OnSelectButton
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 0f90dab2-1abe-4704-84db-13a23eea1278
+    m_ActionName: Player/Submit[/USB Gamepad /button2]
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: Gamepad
   m_DefaultActionMap: Player
