@@ -26,6 +26,7 @@ public class CursorBehavior : MonoBehaviour
 
         // Moves the cursor
         transform.Translate(new Vector3(movement.x, movement.y, 0f) * cursorSpeed/1000);
+        // UnityEngine.Debug.Log("There are currently " + PlayerInput.all.Count + " players.");
     }
 
 

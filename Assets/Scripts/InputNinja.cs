@@ -56,7 +56,7 @@ public class InputNinja : MonoBehaviour
         if (!device.displayName.Contains("Controller") && !device.displayName.Contains("Joystick") && !device.displayName.Contains("Gamepad"))
             return;
 
-        var playerNumberToAdd = numberOfActivePlayers + 1;
+        var playerNumberToAdd = PlayerInput.all.Count + 1;
 
         string controlScheme = "";
 
