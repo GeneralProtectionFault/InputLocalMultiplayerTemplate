@@ -3,38 +3,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerObjectHandler : MonoBehaviour
 {
-    // These will store the prefabs/objects that the player has selected
-    // The reason for using lists is so that we can have an undetermined number of objects that pertain to any given player
-    // For example, a racing game, the player picks a character and a car...
-    public static List<GameObject> player1Objects = new List<GameObject>();
-    public static List<GameObject> player2Objects = new List<GameObject>();
-    public static List<GameObject> player3Objects = new List<GameObject>();
-    public static List<GameObject> player4Objects = new List<GameObject>();
-    public static List<GameObject> player5Objects = new List<GameObject>();
-    public static List<GameObject> player6Objects = new List<GameObject>();
-    public static List<GameObject> player7Objects = new List<GameObject>();
-    public static List<GameObject> player8Objects = new List<GameObject>();
+    // In order to preserve the player's selections AND the controllers the used, and transfer the PlayerInput component
+    // from the cursor to the selection for gameplay, we'll use dictionaries to keep track of both, destroy the cursors and
+    // selected objects, then reinstantiate
 
-    private static Dictionary<int, List<GameObject>> playerDictionary = new Dictionary<int, List<GameObject>>()
-    {
-        { 1, player1Objects },
-        { 2, player2Objects },
-        { 3, player3Objects },
-        { 4, player4Objects },
-        { 5, player5Objects },
-        { 6, player6Objects },
-        { 7, player7Objects },
-        { 8, player8Objects },
-    };
+    public static Dictionary<int, InputDevice> playerControllers = new Dictionary<int, InputDevice>();
+    public static Dictionary<int, GameObject> playerSelections = new Dictionary<int, GameObject>();
+    public static Dictionary<int, string> playerControlSchemes = new Dictionary<int, string>();
 
+    public static bool shouldSpawnSelectedPlayers = false;
 
     private void OnEnable()
     {
         CursorBehavior.DoneSelectingEvent += PlayersDoneSelecting;
-
     }
 
     private void OnDisable()
@@ -49,29 +34,32 @@ public class PlayerObjectHandler : MonoBehaviour
         // UnityEngine.Debug.Log("Player done method tripped");
 
 
-        // First, make sure all players have selected their objects
-        GameObject[] playerObjects = GameObject.FindGameObjectsWithTag("PlayerCursor");
-        foreach (var cursor in playerObjects)
+        // First, make sure all players have selected their objects (players/vehicles/etc...)
+        GameObject[] playerCursors = GameObject.FindGameObjectsWithTag("PlayerCursor");
+        foreach (var cursor in playerCursors)
         {
-            // UnityEngine.Debug.Log(cursor.name);
-
             if (!cursor.GetComponent<CursorBehavior>().objectSelected)
                 return;
         }
 
+        
+
         // If all have selected, store the object(s)
-        foreach (var cursor in playerObjects)
+        for (int i = 0; i < playerCursors.Length; i++)
         {
-            //UnityEngine.Debug.Log(cursor.GetComponent<PlayerInput>().playerIndex + 1);
-            //UnityEngine.Debug.Log(cursor.gameObject.name);
+            var playerInputComponent = playerCursors[i].GetComponent<PlayerInput>();
+            var playerSelection = playerCursors[i].GetComponent<CursorBehavior>().playerSelection;
 
-            int playerNumber = Convert.ToInt32((cursor.GetComponent<PlayerInput>().playerIndex + 1).ToString());
+            DontDestroyOnLoad(playerSelection);
 
-            // We're adding the object that the player SELECTED to their list
-            playerDictionary[playerNumber].Add(cursor.GetComponent<CursorBehavior>().playerSelection);
+            playerControllers.Add(playerInputComponent.playerIndex, playerInputComponent.devices[0]);
+            playerSelections.Add(playerInputComponent.playerIndex, playerSelection);
+            playerControlSchemes.Add(playerInputComponent.playerIndex, playerInputComponent.currentControlScheme);
 
-            // We'll be needing to transfer the PlayerInput component from the cursor object to the selected object
+        }
 
-        }   
+        shouldSpawnSelectedPlayers = true;
+
+        SceneManager.LoadScene("GameplayTestScene");
     }
 }
