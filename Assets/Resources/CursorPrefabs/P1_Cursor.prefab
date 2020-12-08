@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6914592580568750532}
   m_Layer: 5
   m_Name: P1_Cursor
-  m_TagString: Untagged
+  m_TagString: PlayerCursor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -90,6 +90,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cursorSpeed: 50
+  objectSelected: 0
 --- !u!114 &6914592580568750532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -195,6 +196,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 0f90dab2-1abe-4704-84db-13a23eea1278
     m_ActionName: Player/Submit[/USB Gamepad /button2]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7824803196987812671}
+        m_TargetAssemblyTypeName: CursorBehavior, Assembly-CSharp
+        m_MethodName: OnStartButton
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: d2f6764d-9e0d-4246-a0fc-6dcf94b4bbc6
+    m_ActionName: Player/Start[/USB Gamepad /button10]
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: Gamepad
   m_DefaultActionMap: Player

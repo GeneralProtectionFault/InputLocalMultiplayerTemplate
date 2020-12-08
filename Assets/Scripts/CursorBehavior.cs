@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -9,10 +10,10 @@ public class CursorBehavior : MonoBehaviour
     [SerializeField] private float cursorSpeed;
 
     private float screenEdgeThreshold = .02f;
-    private bool objectSelected = false;
-    private GameObject playerSelection;
+    public bool objectSelected = false;
+    public GameObject playerSelection;
 
-
+    public static EventHandler DoneSelectingEvent;
 
     void Update()
     {
@@ -63,6 +64,17 @@ public class CursorBehavior : MonoBehaviour
                 objectSelected = false;
                 playerSelection = null;
             }
+        }
+    }
+
+
+
+    public void OnStartButton(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started)
+        {
+            // UnityEngine.Debug.Log("Start method tripped");
+            DoneSelectingEvent?.Invoke(this, EventArgs.Empty);
         }
     }
 

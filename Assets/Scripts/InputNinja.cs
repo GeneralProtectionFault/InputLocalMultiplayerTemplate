@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class InputNinja : MonoBehaviour
 {
@@ -21,12 +22,7 @@ public class InputNinja : MonoBehaviour
         var myAction = new InputAction(binding: "/*/<button>");
         myAction.performed += (action) => 
         {
-            // Debug.Log($"{action.control.device}");
-
-            // Put logic HERE to check how many players exist (if any), and pass the controller to be bound
-            // Get TYPE of controller - IMPORTANT! 
-            AddPlayer (action.control.device);
-            
+            AddPlayer (action.control.device);   
         };
         myAction.Enable();
     }
@@ -73,7 +69,6 @@ public class InputNinja : MonoBehaviour
             PlayerInput theCursor = PlayerInput.Instantiate(playerCursor, -1, controlScheme, -1, device);
             theCursor.transform.parent = currentCanvas.transform;
             theCursor.transform.localScale = new Vector3 (1f, 1f, 1f);
-            
         }
 
     }
