@@ -12,7 +12,7 @@ public class PlayerObjectHandler : MonoBehaviour
     // selected objects, then reinstantiate
 
     public static Dictionary<int, InputDevice> playerControllers = new Dictionary<int, InputDevice>();
-    public static Dictionary<int, GameObject> playerSelections = new Dictionary<int, GameObject>();
+    public static Dictionary<int, string> playerSelectionNames = new Dictionary<int, string>();
     public static Dictionary<int, string> playerControlSchemes = new Dictionary<int, string>();
 
     public static bool shouldSpawnSelectedPlayers = false;
@@ -48,14 +48,13 @@ public class PlayerObjectHandler : MonoBehaviour
         for (int i = 0; i < playerCursors.Length; i++)
         {
             var playerInputComponent = playerCursors[i].GetComponent<PlayerInput>();
-            var playerSelection = playerCursors[i].GetComponent<CursorBehavior>().playerSelection;
+            var playerSelection = playerCursors[i].GetComponent<CursorBehavior>().playerSelection.name;
 
-            DontDestroyOnLoad(playerSelection);
+            // DontDestroyOnLoad(playerSelection);
 
             playerControllers.Add(playerInputComponent.playerIndex, playerInputComponent.devices[0]);
-            playerSelections.Add(playerInputComponent.playerIndex, playerSelection);
+            playerSelectionNames.Add(playerInputComponent.playerIndex, playerSelection);
             playerControlSchemes.Add(playerInputComponent.playerIndex, playerInputComponent.currentControlScheme);
-
         }
 
         shouldSpawnSelectedPlayers = true;

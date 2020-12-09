@@ -20,8 +20,8 @@ public class CursorBehavior : MonoBehaviour
         // Don't allow the cursor past the edge of the screen!
         var viewportPosition = Camera.main.WorldToViewportPoint(transform.position);
         if ((viewportPosition.x < screenEdgeThreshold && movement.x < 0) ||
-            (viewportPosition.x > 1 - screenEdgeThreshold && movement.x > 0)||
-            (viewportPosition.y < screenEdgeThreshold && movement.y < 0)||
+            (viewportPosition.x > 1 - screenEdgeThreshold && movement.x > 0) ||
+            (viewportPosition.y < screenEdgeThreshold && movement.y < 0) ||
             (viewportPosition.y > 1 - screenEdgeThreshold && movement.y > 0))
             return;
 
