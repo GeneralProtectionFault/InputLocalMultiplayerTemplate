@@ -1,7 +1,8 @@
 # InputLocalMultiplayerTemplate
 Template for selection screen for using multiple (local) cursor icons using gamepads and the new input system.
 
-*** This project has not been thoroughly as yet, this should be a good start, though ***
+*** This project has not been thoroughly as yet, this should be a good start, though.  So far, I have tested just the basic functionality with
+one typical Logitech gamepad and one Chinese hacked SNES USB replica which is recognized as a noisy joystick xD ***
 
 This is a Unity project using the New Input System package.
 Many people, myself included as much as anyone, have had a difficult time with local multiplayer in the new input system.
