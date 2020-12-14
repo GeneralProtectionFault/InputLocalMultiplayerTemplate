@@ -57,7 +57,7 @@ public class SceneInitialization : MonoBehaviour
             // disabled, that it...doesn't work.  This code here will force it to keep the device/scheme/etc... that we tried to assign the wretch above!
             var inputUser = playerInput.user;
             playerInput.SwitchCurrentControlScheme(playerControlScheme);
-            InputUser.PerformPairingWithDevice(playerController, inputUser, UnityEngine.InputSystem.Users.InputUserPairingOptions.UnpairCurrentDevicesFromUser);
+            InputUser.PerformPairingWithDevice(playerController, inputUser, InputUserPairingOptions.UnpairCurrentDevicesFromUser);
         }
     }
 

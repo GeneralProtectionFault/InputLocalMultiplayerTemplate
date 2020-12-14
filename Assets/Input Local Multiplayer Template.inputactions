@@ -291,6 +291,28 @@
                 },
                 {
                     "name": "",
+                    "id": "1edf2925-c757-462a-a23e-4f0d1942f532",
+                    "path": "<HID::Generic   USB  Joystick  >/button7",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Joystick;Gamepad",
+                    "action": "Submit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d830587d-3962-4714-9288-9e322a27a8fd",
+                    "path": "<HID::Generic   USB  Joystick  >/button3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad;Joystick",
+                    "action": "Submit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "12ba3bd7-7f17-4ce0-9541-eaee516a9af4",
                     "path": "<Gamepad>/start",
                     "interactions": "",
@@ -304,6 +326,17 @@
                     "name": "",
                     "id": "a0e8fa11-b235-416f-970a-d69fc0fda4f5",
                     "path": "<HID::USB Gamepad >/button10",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad;Joystick",
+                    "action": "Start",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4fdc128e-76d9-498d-ba2d-3b23a8780335",
+                    "path": "<HID::Generic   USB  Joystick  >/button10",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad;Joystick",
