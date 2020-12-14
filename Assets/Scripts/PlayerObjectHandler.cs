@@ -39,7 +39,10 @@ public class PlayerObjectHandler : MonoBehaviour
         foreach (var cursor in playerCursors)
         {
             if (!cursor.GetComponent<CursorBehavior>().objectSelected)
+            {
+                UnityEngine.Debug.Log(cursor + " object has not selected a player!");
                 return;
+            }
         }
 
         

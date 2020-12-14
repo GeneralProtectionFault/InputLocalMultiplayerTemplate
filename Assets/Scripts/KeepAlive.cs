@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class KeepAlive : MonoBehaviour
 {
-    public static GameObject sceneManager;
+    private GameObject sceneManager;
 
 
     // Start is called before the first frame update
@@ -13,7 +13,7 @@ public class KeepAlive : MonoBehaviour
         if (sceneManager == null)
         {
             sceneManager = gameObject;
-            DontDestroyOnLoad(sceneManager);
+            DontDestroyOnLoad(gameObject);
         }
         else
             Destroy(gameObject);
