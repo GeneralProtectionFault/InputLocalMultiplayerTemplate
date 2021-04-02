@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Layouts;
 using UnityEngine.UI;
 
 public class InputNinja : MonoBehaviour
@@ -22,6 +23,8 @@ public class InputNinja : MonoBehaviour
         var myAction = new InputAction(binding: "/*/<button>");
         myAction.performed += (action) => 
         {
+            //UnityEngine.Debug.Log(Gamepad.current.description.deviceClass);
+            //UnityEngine.Debug.Log(action.control.device.description);
             AddPlayer (action.control.device);   
         };
         myAction.Enable();

@@ -151,7 +151,7 @@ namespace UnityEngine.InputSystem.UI
         /// when subsequently disabling the component, the property will continue to return the mouse device
         /// but the device will not be added to the system while the component is not enabled.
         /// </remarks>
-        private Mouse virtualMouse => m_VirtualMouse;
+        public Mouse virtualMouse => m_VirtualMouse;
 
         /// <summary>
         /// The Vector2 stick input that drives the mouse cursor, i.e. <see cref="Mouse.position"/> on
