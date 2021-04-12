@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Layouts;
 using UnityEngine.UI;
 
-public class InputNinja : MonoBehaviour
+public class GamepadJoinBehavior : MonoBehaviour
 {
     [SerializeField] Canvas currentCanvas;
     public int numberOfActivePlayers { get; private set; } = 0;

@@ -12,10 +12,17 @@ public class PlayerObjectHandler : MonoBehaviour
     // selected objects, then reinstantiate
 
     public static Dictionary<int, InputDevice> playerControllers = new Dictionary<int, InputDevice>();
-    public static Dictionary<int, string> playerSelectionNames = new Dictionary<int, string>();
+
+    // List of the NAMES of the game objects that we want to instantiate as the "player" when getting t that scene
+    // ***  List<string> is because we might want to have more than 1 game object for a player (i.e. a character and a sword)
+    //      In this case, we'll treat the FIRST object as the one w/ the PlayerInput, and just instantiate the rest
+    //      Parenting/placing/etc... can be performed after the scene is loaded.
+    public static Dictionary<int, List<string>> playerSelectionNames = new Dictionary<int, List<string>>();
     public static Dictionary<int, string> playerControlSchemes = new Dictionary<int, string>();
 
-    public static bool shouldSpawnSelectedPlayers = false;
+    [SerializeField] public static bool shouldSpawnSelectedPlayers = false;
+    [SerializeField] public static bool shouldPersistCursors = false;
+
 
     private void OnEnable()
     {
@@ -53,14 +60,33 @@ public class PlayerObjectHandler : MonoBehaviour
             var playerInputComponent = playerCursors[i].GetComponent<PlayerInput>();
             var playerSelection = playerCursors[i].GetComponent<CursorBehavior>().playerSelection.name;
 
-            // DontDestroyOnLoad(playerSelection);
+            var playerIndex = playerInputComponent.playerIndex;
+            
 
-            playerControllers.Add(playerInputComponent.playerIndex, playerInputComponent.devices[0]);
-            playerSelectionNames.Add(playerInputComponent.playerIndex, playerSelection);
+            playerControllers.Add(playerIndex, playerInputComponent.devices[0]);
+
+            // If initializing/first player object/selection screen
+            if (!playerSelectionNames.ContainsKey(playerIndex))
+            {
+                playerSelectionNames.Add(playerIndex, new List<string>() { playerSelection });
+            }
+            else
+            {
+                var currentGameObjectList = playerSelectionNames[playerIndex];
+                currentGameObjectList.Add(playerSelection);
+            }
+
             playerControlSchemes.Add(playerInputComponent.playerIndex, playerInputComponent.currentControlScheme);
         }
 
+
+        // Set this variable if we're done selecitng player objects, and the next scene will be where they spawn.
         shouldSpawnSelectedPlayers = true;
+
+        // Set this if going through multiple selection screens, in which case we'll want to NOT spawn the players
+        // (as in, this should always be set the opposite of shouldSpawnSelectedPlayers), and bring the cursors
+        // with their PlayerInput components over to the next selection screen.
+        shouldPersistCursors = false;
 
         SceneManager.LoadScene("GameplayTestScene");
     }

@@ -26,7 +26,7 @@ public class PlayerControls : MonoBehaviour
     /// <param name="playerInput">Pass in the PlayerInput that was instantiated</param>
     public void SetPlayerInputActive(bool activation, PlayerInput playerInput)
     {
-        // sUnityEngine.Debug.Log("Activating pi at " + Time.time);
+        // UnityEngine.Debug.Log("Activating pi at " + Time.time);
         if (pi == null)
             pi = playerInput;
 
