@@ -1,5 +1,5 @@
 # InputLocalMultiplayerTemplate
-Template for selection screen for using multiple (local) cursor icons using gamepads and the new input system.
+Template for selection screen for using multiple (local) cursor icons using gamepads and the new input system (Smash Bros. Style Selection).
 
 *** This project has not been thoroughly as yet, this should be a good start, though.  So far, I have tested just the basic functionality with
 one typical Logitech gamepad and one Chinese hacked SNES USB replica which is recognized as a noisy joystick xD ***
