@@ -20,6 +20,10 @@ public class PlayerObjectHandler : MonoBehaviour
     public static Dictionary<int, List<string>> playerSelectionNames = new Dictionary<int, List<string>>();
     public static Dictionary<int, string> playerControlSchemes = new Dictionary<int, string>();
 
+    // Use this only if persisting cursors to the next screen (if selecting more than one "thing"/object per player)
+    // If so, set shouldSpawnSelectedPlayers to false.  We'll just keep the cursors, which will have the PlayerInput components (which define the players)
+    public static GameObject[] playerCursors;
+
     [SerializeField] public static bool shouldSpawnSelectedPlayers = false;
     [SerializeField] public static bool shouldPersistCursors = false;
 
@@ -36,13 +40,15 @@ public class PlayerObjectHandler : MonoBehaviour
 
 
 
+
     private void PlayersDoneSelecting(object sender, EventArgs e)
     {
         // UnityEngine.Debug.Log("Player done method tripped");
 
 
         // First, make sure all players have selected their objects (players/vehicles/etc...)
-        GameObject[] playerCursors = GameObject.FindGameObjectsWithTag("PlayerCursor");
+        playerCursors = GameObject.FindGameObjectsWithTag("PlayerCursor");
+
         foreach (var cursor in playerCursors)
         {
             if (!cursor.GetComponent<CursorBehavior>().objectSelected)

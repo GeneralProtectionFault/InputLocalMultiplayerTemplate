@@ -50,6 +50,6 @@ public class PlayerControls : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        movement = context.ReadValue<Vector2>();
+        movement = context.ReadValue<Vector2>() * 10;
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Layouts;
+using UnityEngine.InputSystem.Users;
 using UnityEngine.UI;
 
 public class GamepadJoinBehavior : MonoBehaviour
@@ -49,7 +50,8 @@ public class GamepadJoinBehavior : MonoBehaviour
             }            
         }
 
-        // UnityEngine.Debug.Log(device.displayName);
+        //UnityEngine.Debug.Log(device.device);
+        
 
         // Don't execute if not a gamepad or joystick
         if (!device.displayName.Contains("Controller") && !device.displayName.Contains("Joystick") && !device.displayName.Contains("Gamepad"))
