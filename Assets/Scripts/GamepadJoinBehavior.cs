@@ -61,16 +61,21 @@ public class GamepadJoinBehavior : MonoBehaviour
 
         string controlScheme = "";
 
+        // The inclusion of a Gamepad & Joystick scheme here is due to the potential for cheap/whacky
+        // controllers to be picked up as joysticks (D-pads detected as HATs or what-not)
         if (device.displayName.Contains("Controller") || device.displayName.Contains("Gamepad"))
             controlScheme = "Gamepad";
         else if (device.displayName.Contains("Joystick"))
             controlScheme = "Joystick";
 
+        // *** Note this utilizes the NAME of the cursor prefabs to associate the player/player # ***
         GameObject playerCursor = Resources.Load<GameObject>($"CursorPrefabs/P{playerNumberToAdd}_Cursor");
 
 
         if (!playerCursor.activeInHierarchy)
         {
+            // This creates the PlayerInput component.
+            // In Unity's new input system, the creation of this component is what defines the existence of the "player"
             PlayerInput theCursor = PlayerInput.Instantiate(playerCursor, -1, controlScheme, -1, device);
             theCursor.transform.parent = currentCanvas.transform;
             theCursor.transform.localScale = new Vector3 (1f, 1f, 1f);

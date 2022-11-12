@@ -11,7 +11,8 @@
                     "id": "35778e47-e2db-4303-a88d-f0cead8f6033",
                     "expectedControlType": "Vector2",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Look",
@@ -19,7 +20,8 @@
                     "id": "d1954d95-a8d0-4587-82d4-e97df6db7f48",
                     "expectedControlType": "Vector2",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Fire",
@@ -27,7 +29,8 @@
                     "id": "5c142f27-81c3-4e5f-89c8-b7d45eaaa61e",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Submit",
@@ -35,7 +38,8 @@
                     "id": "0f90dab2-1abe-4704-84db-13a23eea1278",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Start",
@@ -43,7 +47,8 @@
                     "id": "d2f6764d-9e0d-4246-a0fc-6dcf94b4bbc6",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -356,7 +361,8 @@
                     "id": "c509cbe4-f7d4-4482-a128-7e8537b38baa",
                     "expectedControlType": "Vector2",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Submit",
@@ -364,7 +370,8 @@
                     "id": "79f71a83-a1ef-4a63-aa64-fe0df76b3384",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Cancel",
@@ -372,7 +379,8 @@
                     "id": "ded8e443-0d8a-4115-a7c0-ca262a958259",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Point",
@@ -380,7 +388,8 @@
                     "id": "b0e5e722-9cbf-47fb-be3d-96eee76c43b7",
                     "expectedControlType": "Vector2",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Click",
@@ -388,7 +397,8 @@
                     "id": "d1751892-4476-4cf9-9632-81e389bfa860",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "ScrollWheel",
@@ -396,7 +406,8 @@
                     "id": "be94f28e-9acc-4d2f-b1de-3f1bdd33218a",
                     "expectedControlType": "Vector2",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "MiddleClick",
@@ -404,7 +415,8 @@
                     "id": "54a052d6-50c9-4570-aaae-e3595eee8bea",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "RightClick",
@@ -412,7 +424,8 @@
                     "id": "ad6ec39a-f3d3-4924-bc19-1d13673c3eb2",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "TrackedDevicePosition",
@@ -420,7 +433,8 @@
                     "id": "b51d60ea-0e29-4fbe-83c2-ee68c40694f1",
                     "expectedControlType": "Vector3",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "TrackedDeviceOrientation",
@@ -428,7 +442,8 @@
                     "id": "4774211a-f33f-4d03-a472-e8dd1068dfcc",
                     "expectedControlType": "Quaternion",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -713,7 +728,7 @@
                     "path": "*/{Cancel}",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Gamepad",
                     "action": "Cancel",
                     "isComposite": false,
                     "isPartOfComposite": false
